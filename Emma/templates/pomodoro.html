@@ -1,18 +1,12 @@
-{% extends "base.html"  %}
+{% extends "base.html" %}
 {% load static %}
-{%block title%} pomodoro {%endblock%}
+{% block title %}Pomodoro{% endblock %}
 
-{%block content%}
+{% block content %}
 <div class="pomodoro-container">
     <h1>Pomodoro Timer</h1>
     <div id="pomodoro-app"></div>
 </div>
-<script>
-    function loadPomodoroApp() {
-        const script = document.createElement("script");
-        script.src = "{% static 'js/pomodoro.js' %}";
-        document.body.appendChild(script);
-    }
-    window.onload = loadPomodoroApp;
-</script>
-{%endblock%}
+
+<script src="{% static 'js/pomodoro.js' %}"></script>
+{% endblock %}

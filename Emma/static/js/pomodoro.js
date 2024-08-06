@@ -47,14 +47,14 @@ class PomodoroTimer {
                     this.isWorkTime = false;
                     this.pomodorosCompleted += 1;
                     this.breakTime = this.pomodorosCompleted % 4 == 0 ? this.longBreakTime : this.shortBreakTime;
-                    alert(this.pomodorosCompleted % 4 == 0 ? "Take a long break and rest your mind." : "Take a short break and stretch your legs!");
+                    alert(this.pomodorosCompleted % 4 == 0 ? "Take a long break!" : "Take a short break!");
                 }
             } else {
                 this.breakTime -= 1;
                 if (this.breakTime == 0) {
                     this.isWorkTime = true;
                     this.workTime = 25 * 60;
-                    alert("Work time! Get back to work!");
+                    alert("Work time!");
                 }
             }
             const time = this.isWorkTime ? this.workTime : this.breakTime;
@@ -67,3 +67,19 @@ class PomodoroTimer {
 }
 
 document.addEventListener("DOMContentLoaded", () => new PomodoroTimer());
+
+// Individual timer functions
+function startITimer(timerId) {
+    console.log(`Starting timer ${timerId}`);
+    // Implement the start logic for individual timers
+}
+
+function pauseITimer(timerId) {
+    console.log(`Pausing timer ${timerId}`);
+    // Implement the pause logic for individual timers
+}
+
+function resetITimer(timerId) {
+    console.log(`Resetting timer ${timerId}`);
+    // Implement the reset logic for individual timers
+}

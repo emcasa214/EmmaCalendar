@@ -1,20 +1,26 @@
-{% extends "base.html"  %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Settings{% endblock %}
 
-{%block title%} setting {%endblock%}
-
-{%block content%}
+{% block content %}
 <div class="profile-container">
-    <h1>Welcome back, {{ request.user.name }} 👋</h1>
+    <h1>Welcome back, {{ request.user.username }} 👋</h1>
     <div class="profile-header">
-        <!-- <img src="path_to_profile_image" alt="Profile Picture"> -->
-        <h2>{{ request.user.name }}</h2>
+        <h2>{{ request.user.username }}</h2>
         <p>{{ request.user.email }}</p>
     </div>
     <form method="post">
         {% csrf_token %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <div class="form-group">
-            <label for="id_name">Full Name</label>
-            {{ form.name }}
+            <label for="id_username">Username</label>
+            {{ form.username }}
         </div>
         <div class="form-group">
             <label for="id_email">Email</label>
@@ -22,5 +28,18 @@
         </div>
         <button type="submit">Save</button>
     </form>
+    <button id="change-password-button">Change Password</button>
+    <form method="post" action="{% url 'setting' %}" id="change-password-form" style="display:none;">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="change_password">
+        {{ change_password_form.as_p }}
+        <button type="submit">Change Password</button>
+    </form>
+
+    <script>
+        document.getElementById('change-password-button').addEventListener('click', function() {
+            document.getElementById('change-password-form').style.display = 'block';
+        });
+    </script>
 </div>
-{%endblock%}
+{% endblock %}

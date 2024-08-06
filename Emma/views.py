@@ -1,11 +1,11 @@
 from datetime import datetime
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Task
+from .models import *
 from .form import *
 from django.http import JsonResponse 
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -141,16 +141,49 @@ def remove(request):
     data = {}
     return JsonResponse(data)
 
+
 def setting(request):
     if request.method == 'POST':
-        form = Setting(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('setting') 
+        if 'password' in request.POST:
+            form = Setting(instance=request.user)
+            change_password_form = ChangePasswordForm(request.user, request.POST)
+            if change_password_form.is_valid():
+                user = change_password_form.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, 'Your password was successfully updated!')
+                return redirect('setting')
+            else:
+                messages.error(request, 'Please correct the errors in the password form.')
+        else:
+            form = Setting(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your profile was successfully updated!')
+                return redirect('setting')
+            else:
+                messages.error(request, 'Please correct the errors in the profile form.')
+        change_password_form = ChangePasswordForm(request.user)
     else:
         form = Setting(instance=request.user)
+        change_password_form = ChangePasswordForm(request.user)
 
-    return render(request, 'setting.html', {'form': form})
+    return render(request, 'setting.html', {
+        'form': form,
+        'change_password_form': change_password_form,
+    })
 
 def pomodoro_timer(request):
-    return render(request, 'pomodoro.html')
+    timers = Timers.objects.all().order_by('priority')
+    form = PomodoroForm()
+    
+    if request.method == "POST":
+        form = PomodoroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('pomodoro_timer')
+
+    context = {
+        'form': form,
+        'timers': timers,
+    }
+    return render(request, 'pomodoro.html', context)
