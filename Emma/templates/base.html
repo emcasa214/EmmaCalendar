@@ -30,8 +30,12 @@
         <a href="{% url 'calendar' %}">
            <button class="glyphicon glyphicon-calendar icon" onclick="changeColor(this)"></button>
         </a>
-        <a href="">
+        <a href="{% url 'pomodoro_timer' %}">
             <button class="glyphicon glyphicon-time icon" onclick="changeColor(this)"></button>
+        </a>
+
+        <a href="{% url 'logout' %}">
+            <button class="glyphicon glyphicon-log-out" onclick="changeColor(this)"></button>
         </a>
         
     </div>

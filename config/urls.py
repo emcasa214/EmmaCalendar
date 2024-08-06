@@ -29,4 +29,6 @@ urlpatterns = [
     path('add_task/', views.add_task, name='add_task'), 
     path('update/', views.update, name='update'),
     path('remove/', views.remove, name='remove'),
+    path('logout/',views.LogoutView, name = 'logout'),
+    path('pomodoro/', views.pomodoro_timer, name='pomodoro_timer'),
 ]
