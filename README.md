@@ -5,14 +5,14 @@
 Create a task management application with calendar integration using Django.
 
 ## Screenshot
+![image](Emma/static/image/image.png)
+![image](Emma/static/image/image copy.png)
+![image](Emma/static/image/image copy2.png)
+![image](Emma/static/image/image copy3.png)
+![image](Emma/static/image/image copy4.png)
+![image](Emma/static/image/image copy5.png)
+![image](Emma/static/image/image copy6.png)
 
-![alt](https://Emma/static/image/image.png)
-![alt](https://Emma/static/image/image copy.png)
-![alt](https://Emma/static/image/image copy2.png)
-![alt](https://Emma/static/image/image copy3.png)
-![alt](https://Emma/static/image/image copy4.png)
-![alt](https://Emma/static/image/image copy5.png)
-![alt](https://Emma/static/image/image copy6.png)
 
 ## Links
 
