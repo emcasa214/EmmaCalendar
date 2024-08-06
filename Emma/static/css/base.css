@@ -1,0 +1,29 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    border: none;
+}
+body{
+    display: flex;
+}
+.sidebar{
+    width: 50px;
+    height: 100vh;
+    background-color: rgb(80, 78, 82);
+    margin-right: 10px;
+}
+.sidebar button{
+    height: fit-content;
+    background-color: transparent;
+    display: block;
+    width: 50px;
+    height: 100px;
+    color: aliceblue;
+    font-size: 20px;
+    filter: brightness(70%); 
+}
+
+.sidebar button:hover{
+    filter: brightness(100%); 
+}

@@ -1,0 +1,26 @@
+{% extends "base.html"  %}
+
+{%block title%} setting {%endblock%}
+
+{%block content%}
+<div class="profile-container">
+    <h1>Welcome back, {{ request.user.name }} 👋</h1>
+    <div class="profile-header">
+        <!-- <img src="path_to_profile_image" alt="Profile Picture"> -->
+        <h2>{{ request.user.name }}</h2>
+        <p>{{ request.user.email }}</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Full Name</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="id_email">Email</label>
+            {{ form.email }}
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>
+{%endblock%}

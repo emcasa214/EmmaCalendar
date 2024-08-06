@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{%block title%} Calendar {%endblock%}
+
+{%block content%}
+    <div class="container">
+        <div class="row">
+            <h4>Python Django Ajax FullCalender CRUD (Create, Read, Update and Delete)</h4> 
+            <div class="col-md-12">    
+                <div id='calendar'></div> 
+            </div> 
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            // dùng jquery để chọn phần tử html có id là calendar, phần tử này sẽ chứa calendar
+            // fullCalendar({....}) khởi tạo FullCalendar với các tùy chọn cấu hình bao gồm cài header, sự kiện, khả năng chọn, chỉnh sửa sự kiện
+            var calendar = $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev, next, today',
+                    center: 'title',
+                    right: 'month, agendaWeek, agendaDay'
+                },
+                //bất cứ khi nào trang được load lại. sẽ truy cập all task để lấy csdl
+                events: '/all_task',
+                // cho phép chọn khoảng tg trên lịch
+                selectable: true,
+                // hiển thị trợ giúp khi chọn khoảng tg
+                selectHelper: true,
+                //cho phép kéo thả thay đổi sk
+                editable: true,
+                //giới hạn sự kiện nếu vượt sẽ hiển thị liên kết để xem thêm
+                eventLimit: true,
+
+                //hàm callback khi chọn 1 khoảng tgian
+                select: function(start, end, allDay){
+                    var title = prompt("Enter Event Title");
+                    if (title) {
+                        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                        $.ajax({
+                            type: "GET",
+                            url: '/add_task',
+                            data: {'title': title, 'start': start, 'end': end},
+                            dataType: "json",
+                            success: function (data) {
+                                //FullCalendar tải lại các sự kiện từ máy chủ để cập nhật lịch với sự kiện mới.
+                                calendar.fullCalendar('refetchEvents');
+                                alert("Added Successfully");
+                            },
+                            error: function (data) {
+                                alert('There is a problem!!!');
+                            }
+                        });
+                    }   
+                },
+
+                // hàm callback của Fullcalendar, gọi khi người dùng đổi kích thước một sự kiện. nhận tham số event chứa thông tin sự kiện
+                eventResize: function (task){
+                    var start = $.fullCalendar.formatDate(task.start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(task.end, "Y-MM-DD HH:mm:ss");
+                    var title = task.title; // Tên tự đặt: biến title
+                    var id = task.id; // Tên tự đặt: biến id
+
+                    $.ajax({
+                        type: "GET",
+                        url: '/update',
+                        data: {'title': title, 'start': start, 'end': end, 'id': id},
+                        dataType: "json",
+                        success: function (data){
+                            calendar.fullCalendar('refetchEvents');
+                            alert('Event Updated');
+                        },
+                        error: function (data) {
+                            alert('There is a problem!!!');
+                        }
+                    });
+                },
+                //đổi vị trí task
+                eventDrop: function (task) {
+                    var start = $.fullCalendar.formatDate(task.start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(task.end, "Y-MM-DD HH:mm:ss");
+                    var title = task.title;
+                    var id = task.id;
+                    $.ajax({
+                        type: "GET",
+                        url: '/update',
+                        data: {'title': title, 'start': start, 'end': end, 'id': id},
+                        dataType: "json",
+                        success: function (data) {
+                            calendar.fullCalendar('refetchEvents');
+                            alert('Event Update');
+                        },
+                        error: function (data) {
+                            alert('There is a problem!!!');
+                        }
+                    });
+                }, 
+                eventClick: function (task) {
+                    if (confirm("Are you sure you want to remove it?")) {
+                        var id = task.id;
+                        $.ajax({
+                            type: "GET",
+                            url: '/remove',
+                            data: {'id': id},
+                            dataType: "json",
+                            success: function (data) {
+                                calendar.fullCalendar('refetchEvents');
+                                alert('Event Removed');
+                            },
+                            error: function (data) {
+                                alert('There is a problem!!!');
+                            }
+                        });
+                    }
+                },
+
+            });
+        });
+    </script>
+{%endblock%}
