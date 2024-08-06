@@ -1,31 +1,67 @@
-#### The challenge
+# Emma Calendar - Task Management with Calendar Integration
 
-This project is a solution to the [Recipe page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/recipe-page-KiTsR8QQKm). The goal was to build a responsive recipe page using HTML, CSS, and possibly a JavaScript framework.
+## The Challenge
 
-#### Screenshot
+Create a task management application with calendar integration using Django.
 
-![image](https://github.com/emcasa214/Recipe-Page/assets/126786525/8dceeb2d-c20c-4e0d-a240-2522d4b0daa4)
+## Screenshot
 
+[Bạn có thể thêm screenshot của ứng dụng của mình ở đây]
 
-#### Links
-- Solution URL: https://github.com/emcasa214/Recipe-Page.git
-- Live Site URL: https://emcasa214.github.io/Recipe-Page/
+## Links
 
-### My Process
-#### Built with
-- Semantic HTML5 markup
-- CSS custom properties
-- CSS Grid
+- Solution URL: https://github.com/emcasa214/EmmaCalendar.git
+
+## My Process
+
+### Built with
+
+- Django 3.2.12
+- Python 3.10.12
+- HTML5
+- CSS3
+- JavaScript
+- FullCalendar library
 
 ### What I Learned
-I learned how to structure a responsive web page using HTML and CSS
+
+Through this project, I learned:
+- How to create a Django application for task management
+- Integrating date selection for tasks
+- Implementing a calendar view using FullCalendar
+- Handling form submissions and database operations in Django
 
 ### Continued Development
-I plan to continue improving my skills in responsive design and exploring more advanced features of HTML and CSS.
 
-### Author
+I plan to continue improving the application by:
+- Enhancing the user interface
+- Adding more features like task categorization and recurring tasks
+- Implementing user authentication and personal task lists
+
+## Author
+
 - Em Casa
--[GitHub Profile]: https://github.com/emcasa214
+- [GitHub Profile](https://github.com/emcasa214)
 
-### Acknowledgments
-I want to acknowledge [Frontend Mentor](https://www.frontendmentor.io/) for providing this challenge and the supportive community for valuable feedback.
+## How To Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/emcasa214/EmmaCalendar.git
+
+# Navigate to the project directory
+cd EmmaCalendar
+
+# Create and activate a virtual environment (optional but recommended)
+python3 -m venv .env
+source .env/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Apply database migrations
+python manage.py makemigrations
+python manage.py migrate
+
+# Run the development server
+python manage.py runserver
