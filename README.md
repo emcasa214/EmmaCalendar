@@ -44,24 +44,21 @@ I plan to continue improving the application by:
 - [GitHub Profile](https://github.com/emcasa214)
 
 ## How To Setup
-
-```bash
-# Clone the repository
+```
 git clone https://github.com/emcasa214/EmmaCalendar.git
-
-# Navigate to the project directory
+```
+```
 cd EmmaCalendar
-
-# Create and activate a virtual environment (optional but recommended)
-python3 -m venv .env
+```
+```
 source .env/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Apply database migrations
+```
+```
 python manage.py makemigrations
+```
+```
 python manage.py migrate
-
-# Run the development server
+```
+```
 python manage.py runserver
+```
