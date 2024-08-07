@@ -144,9 +144,10 @@ def remove(request):
 
 def setting(request):
     if request.method == 'POST':
-        if 'password' in request.POST:
-            form = Setting(instance=request.user)
-            change_password_form = ChangePasswordForm(request.user, request.POST)
+        form = Setting(instance=request.user)
+        change_password_form = ChangePasswordForm(request.user, request.POST)
+
+        if request.POST.get('action') == 'change_password':
             if change_password_form.is_valid():
                 user = change_password_form.save()
                 update_session_auth_hash(request, user)
@@ -157,12 +158,27 @@ def setting(request):
         else:
             form = Setting(request.POST, instance=request.user)
             if form.is_valid():
-                form.save()
-                messages.success(request, 'Your profile was successfully updated!')
+                user = form.save(commit=False)
+                updated_fields = []
+                
+                if 'username' in form.changed_data:
+                    user.username = form.cleaned_data['username']
+                    updated_fields.append('username')
+                
+                if 'email' in form.changed_data:
+                    user.email = form.cleaned_data['email']
+                    updated_fields.append('email')
+                
+                if updated_fields:
+                    user.save(update_fields=updated_fields)
+                    messages.success(request, 'Your profile was successfully updated!')
+                else:
+                    messages.info(request, 'No changes detected in username or email.')
+                
                 return redirect('setting')
             else:
                 messages.error(request, 'Please correct the errors in the profile form.')
-        change_password_form = ChangePasswordForm(request.user)
+
     else:
         form = Setting(instance=request.user)
         change_password_form = ChangePasswordForm(request.user)
