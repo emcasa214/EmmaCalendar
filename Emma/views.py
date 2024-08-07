@@ -172,6 +172,17 @@ def setting(request):
         'change_password_form': change_password_form,
     })
 
+def reset(request):
+    if request.method == "POST":
+        form = ResetPasswordForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success_view')  # Redirect to a success page
+    else:
+        form = ResetPasswordForm()
+
+    return render(request, 'reset.html', {'form': form})
+
 def pomodoro_timer(request):
     timers = Timers.objects.all().order_by('priority')
     form = PomodoroForm()
