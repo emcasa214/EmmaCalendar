@@ -177,7 +177,7 @@ def reset(request):
         form = ResetPasswordForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success_view')  # Redirect to a success page
+            return redirect('login')  # Redirect to a success page
     else:
         form = ResetPasswordForm()
 
