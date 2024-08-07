@@ -17,13 +17,9 @@ class Update(forms.ModelForm):
 class Setting(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     class Meta:
         model = User
-        fields = ['username', 'email', 'password'] 
-    def clean_password(self):
-        # Trả về giá trị password chỉ khi nó được thay đổi
-        return self.cleaned_data.get('password') or self.initial.get('password')
+        fields = ['username', 'email'] 
 
 class ChangePasswordForm(PasswordChangeForm):
     old_password = forms.CharField(
