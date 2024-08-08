@@ -5,15 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
-    <title>Document</title>
+    <title>Emma Calendar</title>
 </head>
 <body>
-    <h1>Welcome</h1> 
-    <a href="{% url 'signup' %}">
-        <h2>Sign Up</h2>
-    </a>
-    <a href="{% url 'login' %}">
-        <h2>Log in</h2>
-    </a>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="{% url 'login' %}" class="login-btn">Log in</a>
+                <a href="{% url 'signup' %}" class="signup-btn">Sign up</a>
+            </nav>
+        </header>
+        <main>
+            <div class="content">
+                <h1>Welcome to<br>Emma Calendar</h1>
+            </div>
+            <div class="illustration">
+                <!-- Add your illustration here
+                 <img src="static/image/calendaralendarc.png" alt=""> -->
+            </div>
+        </main>
+    </div>
 </body>
 </html>
