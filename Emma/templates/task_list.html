@@ -3,6 +3,7 @@
 
 {%block content%}
 <div class="todo-container">
+    <!-- add task  -->
     <div class="todo-search">
       <form action="" method="POST">
         {% csrf_token %}
@@ -10,7 +11,9 @@
         <button type="submit" name="add_task">Add</button>
       </form>
     </div>
+    <!-- to do list  -->
     <div class="todo-list">
+      <!-- doing  -->
       <div class="todo">
         <h3>Doing</h3>
         {% for task in d_tasks %}
@@ -24,15 +27,19 @@
         </form>
         {% endfor %}
       </div>
+      <!-- done  -->
       <div class="todo">
-        <h3>Completed</h3>
+        <h2 onclick="toggleCompletedTasks()">
+          Completed
+          <span class="material-icons">expand_more</span>
+        </h2>
         {% for task in c_tasks %}
         <form action="" method="POST">
           {% csrf_token %}
           <div class="task">
             <input type="hidden" name="task_id" value="{{ task.id }}">
             <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
-            <p>{{task.title}}</p>
+            <p>{{task.title}}</p> 
           </div>
         </form>
         {% endfor %}
@@ -40,3 +47,4 @@
     </div>
 </div>
 {%endblock%}
+
