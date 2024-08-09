@@ -1,4 +1,4 @@
-*{
+/* *{
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
@@ -10,9 +10,13 @@ body{
 .sidebar{
     width: 50px;
     height: 100vh;
-    background-color: rgb(80, 78, 82);
+    background-color: rgb(69, 38, 38);
     margin-right: 10px;
 }
+a {
+    text-decoration: none;
+}
+
 .sidebar button{
     height: fit-content;
     background-color: transparent;
@@ -26,4 +30,4 @@ body{
 
 .sidebar button:hover{
     filter: brightness(100%); 
-}
+} */

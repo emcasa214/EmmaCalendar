@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 10px;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('/static/image/world.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.wrapper {
+    width: 400px;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.input-box {
+    position: relative;
+    margin: 15px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -5px;
+    left: 0;
+    font-size: 12px;
+    color: #fff;
+}
+
+.input-box.button input {
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    border: none;
+    padding: 9px 20px 16px 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.input-box.button input:hover {
+    background: rgba(255, 255, 255, 0);
+    color: #fff;
+    border: 1px solid #efefef;
+}
+
+.text {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.text h3 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.text a {
+    color: #efefef;
+    text-decoration: none;
+}
+
+.text a:hover {
+    text-decoration: underline;
+}

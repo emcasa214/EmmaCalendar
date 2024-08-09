@@ -1,16 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
 </head>
 <body>
-    <h2>Reset Password</h2>
-    <form method="post" action="{% url 'reset' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Reset Password</button>
-    </form>
+    <div class="wrapper">
+        <h2>Reset Password</h2>
+        <form method="post" action="{% url 'reset' %}">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="input-box">
+                    {{ field }}
+                    {{ field.label_tag }}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <p class="error-message">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="input-box button">
+                <input type="submit" value="Reset Password">
+            </div>
+            <div class="text">
+                <h3><a href="{% url 'login' %}">Back to Login</a></h3>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
