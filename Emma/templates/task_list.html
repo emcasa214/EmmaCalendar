@@ -1,9 +1,7 @@
 {% extends "base.html"  %}
-{% load static %}
 {%block title%} task {%endblock%}
 
 {%block content%}
-
 <div class="todo-container">
     <div class="todo-search">
       <form action="" method="POST">
@@ -12,9 +10,7 @@
         <button type="submit" name="add_task">Add</button>
       </form>
     </div>
-  
     <div class="todo-list">
-      
       <div class="todo">
         <h3>Doing</h3>
         {% for task in d_tasks %}
@@ -41,9 +37,6 @@
         </form>
         {% endfor %}
       </div>
-        
-  
     </div>
 </div>
-  
 {%endblock%}
