@@ -1,42 +1,78 @@
-{% extends "base.html"  %}
-{%block title%} task {%endblock%}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Task{% endblock %}
 
-{%block content%}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/task_list.css' %}">
 <div class="todo-container">
-    <div class="todo-search">
-      <form action="" method="POST">
-        {% csrf_token %}
-        {{form.title}}
-        <button type="submit" name="add_task">Add</button>
-      </form>
+    <div class="todo-search add-task">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.title }}
+            <button type="submit" name="add_task" class="	glyphicon glyphicon-collapse-down"></button>
+        </form>
     </div>
-    <div class="todo-list">
-      <div class="todo">
-        <h3>Doing</h3>
-        {% for task in d_tasks %}
-        <form action="" method="POST">
-          {% csrf_token %}
-          <div class="task">
-            <input type="hidden" name="task_id" value="{{ task.id }}">
-            <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
-            <p>{{task.title}}</p>
-          </div>
-        </form>
-        {% endfor %}
-      </div>
-      <div class="todo">
-        <h3>Completed</h3>
-        {% for task in c_tasks %}
-        <form action="" method="POST">
-          {% csrf_token %}
-          <div class="task">
-            <input type="hidden" name="task_id" value="{{ task.id }}">
-            <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
-            <p>{{task.title}}</p>
-          </div>
-        </form>
-        {% endfor %}
-      </div>
+    <div class="task-grid todo-list">
+        <div class="todo">
+            <h3>Doing</h3>
+            {% for task in d_tasks %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="task-item">
+                    <input type="hidden" name="task_id" value="{{ task.id }}">
+                    <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
+                    <p>{{ task.title }}</p>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+        <!-- <div class="todo">
+            <h2 onclick="toggleCompletedTasks()">
+            Completed
+            <span class="glyphicon glyphicon-collapse-down"></span>
+            </h2>
+            {% for task in c_tasks %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="task-item completed-task">
+                    <input type="hidden" name="task_id" value="{{ task.id }}">
+                    <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
+                    <p>{{ task.title }}</p>
+                </div>
+            </form>
+            {% endfor %}
+        </div> -->
+    </div>
+    <div class="completed-section">
+        <h2 onclick="toggleCompletedTasks()">
+            Completed
+            <span class="glyphicon glyphicon-collapse-down"></span>
+        </h2>
+        <div class="completed-tasks">
+          {% for task in c_tasks %}
+          <form action="" method="POST">
+              {% csrf_token %}
+              <div class="task-item completed-task">
+                  <input type="hidden" name="task_id" value="{{ task.id }}">
+                  <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
+                  <p>{{ task.title }}</p>
+              </div>
+          </form>
+          {% endfor %}
+        </div>
     </div>
 </div>
-{%endblock%}
+
+<script>
+    function toggleCompletedTasks() {
+        const completedTasks = document.querySelector('.completed-tasks');
+        const expandIcon = document.querySelector('.completed-section h2 .material-icons');
+        completedTasks.classList.toggle('show');
+        if (completedTasks.classList.contains('show')) {
+            expandIcon.style.transform = 'rotate(180deg)';
+        } else {
+            expandIcon.style.transform = 'rotate(0deg)';
+        }
+    }
+</script>
+{% endblock %}
