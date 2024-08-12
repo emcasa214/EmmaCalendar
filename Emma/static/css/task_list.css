@@ -1,7 +1,50 @@
-/* Center the form within the parent div */
-.todo-container {
-    text-align: center;
-    background-color: #ffffff00;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: white;
+}
+
+.container {
+    display: flex;
+    background-color: #1e1e1e;
+    min-height: 100vh;
+    max-width: 100vw;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right .material-icons {
+    margin-right: 15px;
+    color: #666;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .add-task {
@@ -11,7 +54,6 @@
     align-items: center;
     padding: 10px 15px;
     margin-bottom: 20px;
-    width: 600px;
 }
 
 .add-task input {
@@ -20,38 +62,24 @@
     color: white;
     flex-grow: 1;
     font-size: 16px;
-    width: 500px;
 }
 
 .add-task input::placeholder {
     color: #888;
 }
 
-.add-task .glyphicon-collapse-down {
-    color: #ffffff;
+.add-task .material-icons {
+    color: #888;
+    background: none;
+    border: none;
     cursor: pointer;
 }
 
-.todo-list {
+.task-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     margin-bottom: 30px;
-    width: 100%;
-    max-width: 800px;
-}
-
-.todo {
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 700px;
-    min-height: 600px;
-}
-
-.todo h3 {
-    margin-bottom: 10px;
 }
 
 .task-item {
@@ -61,8 +89,6 @@
     display: flex;
     align-items: center;
     padding-left: 15px;
-    margin-bottom: 10px;
-    color: white;
 }
 
 .task-item .material-icons {
@@ -100,7 +126,6 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    color: white;
 }
 
 .completed-task .material-icons {
