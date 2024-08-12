@@ -1,9 +1,7 @@
 /* Center the form within the parent div */
 .todo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    text-align: center;
+    background-color: #ffffff00;
 }
 
 .add-task {
@@ -13,8 +11,7 @@
     align-items: center;
     padding: 10px 15px;
     margin-bottom: 20px;
-    width: 100%;
-    max-width: 600px;
+    width: 600px;
 }
 
 .add-task input {
@@ -23,14 +20,15 @@
     color: white;
     flex-grow: 1;
     font-size: 16px;
+    width: 500px;
 }
 
 .add-task input::placeholder {
     color: #888;
 }
 
-.add-task .material-icons {
-    color: #888;
+.add-task .glyphicon-collapse-down {
+    color: #ffffff;
     cursor: pointer;
 }
 
@@ -48,6 +46,8 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    min-height: 600px;
 }
 
 .todo h3 {
