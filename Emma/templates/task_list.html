@@ -9,55 +9,44 @@
 
 <div class="container">
     <main>
-        <header>
-            <h1>Welcome back, {{ user.first_name }} 👋</h1>
-            <div class="header-right">
-                <span class="material-icons">search</span>
-                <span class="material-icons">notifications</span>
-                <span class="date">{{ current_date|date:"j F Y" }}</span>
-                {% if user.profile_pic %}
-                    <img src="{{ user.profile_pic.url }}" alt="Profile" class="profile-pic">
-                {% else %}
-                    <span class="material-icons">account_circle</span>
-                {% endif %}
+        <div class="giua">
+            <div class="add-task">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.title }}
+                    <button type="submit" name="add_task" class="material-icons">chevron_right</button>
+                </form>
             </div>
-        </header>
-
-        <div class="add-task">
-            <form action="" method="POST">
-                {% csrf_token %}
-                {{ form.title }}
-                <button type="submit" name="add_task" class="material-icons">chevron_right</button>
-            </form>
-        </div>
-
-        <div class="task-grid">
-            {% for task in d_tasks %}
-            <form action="" method="POST" class="task-item">
-                {% csrf_token %}
-                <input type="hidden" name="task_id" value="{{ task.id }}">
-                <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
-                <span>{{ task.title }}</span>
-            </form>
-            {% endfor %}
-        </div>
-
-        <div class="completed-section">
-            <h2 onclick="toggleCompletedTasks()">
-                Completed
-                <span class="material-icons">expand_more</span>
-            </h2>
-            <div class="completed-tasks">
-                {% for task in c_tasks %}
-                <form action="" method="POST" class="completed-task">
+    
+            <div class="task-grid">
+                {% for task in d_tasks %}
+                <form action="" method="POST" class="task-item">
                     {% csrf_token %}
                     <input type="hidden" name="task_id" value="{{ task.id }}">
-                    <input type="checkbox" name="completed" checked onchange="this.form.submit()">
+                    <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
                     <span>{{ task.title }}</span>
                 </form>
                 {% endfor %}
             </div>
+    
+            <div class="completed-section">
+                <h2 onclick="toggleCompletedTasks()">
+                    Completed
+                    <span class="material-icons">expand_more</span>
+                </h2>
+                <div class="completed-tasks">
+                    {% for task in c_tasks %}
+                    <form action="" method="POST" class="completed-task">
+                        {% csrf_token %}
+                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                        <input type="checkbox" name="completed" checked onchange="this.form.submit()">
+                        <span>{{ task.title }}</span>
+                    </form>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
+        
     </main>
 </div>
 

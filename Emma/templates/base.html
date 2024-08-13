@@ -35,10 +35,25 @@
             <button class="glyphicon glyphicon-log-out" onclick="changeColor(this)"></button>
         </a>
     </div>
+
     <div class="content">
-        {%block content %}
+        <header>
+            <h1>Welcome back {{ user.username }} 👋</h1>
+            <!-- <div class="header-right">
+                <span class="material-icons">search</span>
+                <span class="material-icons">notifications</span>
+                {% if user.profile_pic %}
+                    <img src="{{ user.profile_pic.url }}" alt="Profile" class="profile-pic">
+                {% else %}
+                    <span class="material-icons">account_circle</span>
+                {% endif %}
+            </div> -->
+        </header>
+        <div class="main-content">
+            {%block content %}
         
-        {%endblock%}
+            {%endblock%}
+        </div>
     </div>
 </body>
 </html>

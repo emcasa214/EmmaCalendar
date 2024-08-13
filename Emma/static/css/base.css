@@ -9,7 +9,7 @@ body{
     width: 100%;
 }
 .sidebar{
-    width: 5%;
+    width: 4%;
     height: 100vh;
     background-color: rgb(2, 2, 2);
 }
@@ -22,7 +22,7 @@ body{
     height: fit-content;
     background-color: transparent;
     display: block;
-    width: 80%;
+    width: 100%;
     color: rgb(255, 255, 255);
     font-size: 20px;
     filter: brightness(70%); 
@@ -30,6 +30,36 @@ body{
 .sidebar button:hover{
     filter: brightness(100%); 
 }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #818181;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right .material-icons {
+    margin-right: 15px;
+    color: #666;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .content{
-    width: 95%;
+    width: 96%;
 }
