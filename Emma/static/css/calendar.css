@@ -8,67 +8,110 @@
 
 /* Calendar container styling */
 #calendar {
-    background-color: #fffbfb;
+    background-color: #f0f0f0;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 1500px;
-    height: 800px;
+    width: 880px;
+    height: 80vh;
     overflow: hidden;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 /* Calendar view container styling */
 .fc-view-container {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 70px);
 }
 
 /* Calendar header styling */
 .fc-header-toolbar {
-    background-color: #6d6868;
+    background: linear-gradient(90deg, #3a3a3a, #000000);
     border-bottom: 1px solid #444444;
     border-radius: 10px 10px 0 0;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Add this */
 }
 
 /* Calendar button styling */
-.fc button {
-    display: block;
-    background-color: #000000;
+.fc-button {
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 5px;
-    color: #ffffff;
     padding: 5px 10px;
     font-size: 15px;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.fc button:hover {
-    background-color: #333333;
+.fc-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 1;
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.fc-button:hover::before {
+    transform: scaleX(1);
+}
+
+.fc-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.fc-button:hover,
+.fc-button:active {
+    color: #ffffff !important;
+}
+
+.fc-button:active::before {
+    background-color: #b94a4a;
+    transform: scaleX(1);
 }
 
 /* Calendar title styling */
+.fc-center {
+    position: absolute; /* Add this */
+    left: 50%; /* Add this */
+    transform: translateX(-50%); /* Add this */
+}
+
 .fc-center h2 {
     font-size: 1.5em;
     font-weight: bold;
     color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0; /* Add this */
 }
-
+.fc-right {
+    position: absolute;
+    left: 80%;
+}
 /* Event styling */
 .fc-event {
-    background-color: #000000;
+    background-color: #333333;
     border: none;
     border-radius: 5px;
     color: #ffffff;
-    padding: 5px;
+    padding: 10px;
+    margin: 5px 0;
 }
 
 .fc-event:hover {
-    background-color: #333333;
+    background-color: #000000;
 }
 
 /* Event time styling */
@@ -80,4 +123,16 @@
 .fc-title {
     font-weight: bold;
     color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Hover effect on calendar days */
+.fc-day:hover {
+    background-color: #d0d0d0;
+    cursor: pointer;
+}
+
+/* Add this to ensure the left and right button groups don't overlap with the title */
+.fc-left, .fc-right {
+    z-index: 1;
 }

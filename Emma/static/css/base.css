@@ -9,7 +9,7 @@ body{
     width: 100%;
 }
 .sidebar{
-    width: 4%;
+    width: 5%;
     height: 100vh;
     background-color: rgb(2, 2, 2);
 }
@@ -18,7 +18,7 @@ body{
 }
 
 .sidebar button{
-    padding: 25px;                 
+    padding: 25px 0;                 
     height: fit-content;
     background-color: transparent;
     display: block;
@@ -61,5 +61,5 @@ h1 {
     object-fit: cover;
 }
 .content{
-    width: 96%;
+    width: 95%;
 }
