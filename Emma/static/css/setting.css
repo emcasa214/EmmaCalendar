@@ -1,0 +1,87 @@
+.profile-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 500px;
+    max-width: 90%;
+    color: #000;
+    margin: 50px auto;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.profile-header p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #000;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b8b8b8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #000;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-group button {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.button-group button:last-child {
+    margin-right: 0;
+}
+
+.profile-container button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-container button:hover {
+    background-color: #333;
+}
+
+#change-password-form {
+    margin-top: 10px;
+}

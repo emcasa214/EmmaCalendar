@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Pomodoro{% endblock %}
-
 {% block content %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/pomodoro.css' %}">
 <div class="pomodoro-container">
     <h1>Pomodoro Timer</h1>
-    <div id="pomodoro-app"></div>
+    <div id="pomodoro-app">
+        <!-- <div class="timer-circle">
+            <div class="time">25:00</div>
+        </div>
+        <div class="controls">
+            <button class="start-button">▶</button>
+            <button class="stop-button">Stop</button>
+        </div> -->
+    </div>
 </div>
-
 <script src="{% static 'js/pomodoro.js' %}"></script>
 {% endblock %}

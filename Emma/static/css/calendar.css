@@ -136,3 +136,6 @@
 .fc-left, .fc-right {
     z-index: 1;
 }
+.fc-unthemed td.fc-today {
+    background-color: #cfcfcf;
+}

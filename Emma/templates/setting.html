@@ -3,12 +3,8 @@
 {% block title %}Settings{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/setting.css' %}">
 <div class="profile-container">
-    <h1>Welcome back, {{ request.user.username }} 👋</h1>
-    <div class="profile-header">
-        <h2>{{ request.user.username }}</h2>
-        <p>{{ request.user.email }}</p>
-    </div>
     <form method="post">
         {% csrf_token %}
         {% if messages %}
@@ -26,9 +22,11 @@
             <label for="id_email">Email</label>
             {{ form.email }}
         </div>
-        <button type="submit">Save</button>
+        <div class="button-group">
+            <button type="submit">Save</button>
+            <button type="button" id="change-password-button">Change Password</button>
+        </div>
     </form>
-    <button id="change-password-button">Change Password</button>
     <form method="post" action="{% url 'setting' %}" id="change-password-form" style="display:none;">
         {% csrf_token %}
         <input type="hidden" name="action" value="change_password">

@@ -43,11 +43,11 @@
                         url: '/add_task',
                         data: {'title': title, 'start': start, 'end': end},
                         dataType: "json",
-                        // success: function (data) {
-                        //     //FullCalendar tải lại các sự kiện từ máy chủ để cập nhật lịch với sự kiện mới.
-                        //     calendar.fullCalendar('refetchEvents');
-                        //     alert("Added Successfully");
-                        // },
+                        success: function (data) {
+                            //FullCalendar tải lại các sự kiện từ máy chủ để cập nhật lịch với sự kiện mới.
+                            calendar.fullCalendar('refetchEvents');
+                            alert("Added Successfully");
+                        },
                         error: function (data) {
                             alert('There is a problem!!!');
                         }
@@ -67,10 +67,10 @@
                     url: '/update',
                     data: {'title': title, 'start': start, 'end': end, 'id': id},
                     dataType: "json",
-                    // success: function (data){
-                    //     calendar.fullCalendar('refetchEvents');
-                    //     alert('Event Updated');
-                    // },
+                    success: function (data){
+                        calendar.fullCalendar('refetchEvents');
+                        alert('Event Updated');
+                    },
                     error: function (data) {
                         alert('There is a problem!!!');
                     }
@@ -87,10 +87,10 @@
                     url: '/update',
                     data: {'title': title, 'start': start, 'end': end, 'id': id},
                     dataType: "json",
-                    // success: function (data) {
-                    //     calendar.fullCalendar('refetchEvents');
-                    //     alert('Event Update');
-                    // },
+                    success: function (data) {
+                        calendar.fullCalendar('refetchEvents');
+                        alert('Event Update');
+                    },
                     error: function (data) {
                         alert('There is a problem!!!');
                     }
@@ -104,10 +104,10 @@
                         url: '/remove',
                         data: {'id': id},
                         dataType: "json",
-                        // success: function (data) {
-                        //     calendar.fullCalendar('refetchEvents');
-                        //     alert('Event Removed');
-                        // },
+                        success: function (data) {
+                            calendar.fullCalendar('refetchEvents');
+                            alert('Event Removed');
+                        },
                         error: function (data) {
                             alert('There is a problem!!!');
                         }
