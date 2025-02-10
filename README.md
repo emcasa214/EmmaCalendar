@@ -5,13 +5,12 @@
 Create a task management application with calendar integration using Django.
 
 ## Screenshot
-![image](Emma/static/image/image.png)
-![image](Emma/static/image/imagecopy.png)
-![image](Emma/static/image/imagecopy2.png)
-![image](Emma/static/image/imagecopy3.png)
-![image](Emma/static/image/imagecopy4.png)
-![image](Emma/static/image/imagecopy5.png)
-![image](Emma/static/image/imagecopy6.png)
+![image](Emma/static/image/welcome.png)
+![image](Emma/static/image/login.png)
+![image](Emma/static/image/signup.png)
+![image](Emma/static/image/trangchu.png)
+![image](Emma/static/image/calendar.png)
+![image](Emma/static/image/pomodoro.png)
 
 
 ## Links
@@ -48,23 +47,3 @@ I plan to continue improving the application by:
 
 - Em Casa
 - [GitHub Profile](https://github.com/emcasa214)
-
-## How To Setup
-```
-git clone https://github.com/emcasa214/EmmaCalendar.git
-```
-```
-cd EmmaCalendar
-```
-```
-source .env/bin/activate
-```
-```
-python manage.py makemigrations
-```
-```
-python manage.py migrate
-```
-```
-python manage.py runserver
-```
